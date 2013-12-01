@@ -1,6 +1,6 @@
 {
   "name": "ipso-cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "ipso cli",
   "bin": "./bin/ipso",
   "scripts": {

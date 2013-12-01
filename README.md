@@ -1,3 +1,5 @@
+`sudo npm install -g ipso-cli`
+
 ipso-cli
 ========
 
@@ -6,6 +8,9 @@ ipso cli
 * It is currently tailored fairly tightly to my size and shape of process. 
 
 **However**, there are options:
+
+
+`ipso --help`
 
 ```
 
