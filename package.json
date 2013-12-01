@@ -2,7 +2,7 @@
   "name": "ipso-cli",
   "version": "0.0.0",
   "description": "ipso cli",
-  "main": "lib/ipso.js",
+  "bin": "./bin/ipso",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,5 +14,17 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nomilous/ipso-cli/issues"
+  },
+  "dependencies": {
+    "also": "0.0.12",
+    "hound": "~1.0.4",
+    "should": "~2.1.0",
+    "colors": "~0.6.2",
+    "node-dev": "~2.1.4",
+    "node-inspector": "~0.6.1",
+    "coffee-script": "~1.6.3",
+    "commander": "~2.1.0",
+    "keypress": "~0.2.1",
+    "mocha": "~1.14.0"
   }
 }
