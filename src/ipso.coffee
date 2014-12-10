@@ -8,13 +8,12 @@
 # * Care **has already been taken** to minimize changes
 # 
 
-
 {deferred}     = require 'also'
 {watcher}      = require './watcher'
 {environment}  = require './environment'
 {inspector}    = require './inspector'
 {readFileSync, readdirSync, lstatSync} = require 'fs'
-{normalize}    = require 'path'
+{normalize, dirname}    = require 'path'
 {spawn}        = require 'child_process'
 {sep}          = require 'path'
 {compile}      = require 'coffee-script'
@@ -73,6 +72,7 @@ test = deferred ({resolve}, file) ->
     args     = [ 
         '--colors'
         '--compilers', 'coffee:coffee-script'
+        '--require',   'coffee-script/register'
         '--require',   'should'
         file 
     ]
@@ -90,14 +90,19 @@ test = deferred ({resolve}, file) ->
 
     running.on 'exit', resolve
 
-compile = deferred ({resolve}) ->
+compile = deferred ({resolve}, filename) ->
 
     #
     # TODO: optional compile per file, (and not spawned)
-    #
+    #  
+    #   (half done, below, dangerously)
+
+    outputPath = dirname filename
+    outputPath = outputPath.replace (new RegExp "\/#{src}"), "/#{lib}"
 
     bin    = normalize __dirname + '/../node_modules/.bin/coffee'
-    args   = [ '-c', '-b', '-o', lib, src ]
+    # args   = [ '-c', '-b', '-o', lib, src ]
+    args   = [ '-c', '-b', '-o', outputPath, filename ]
 
     #
     # TODO: consider posibilities behind source diffs to facto
@@ -128,7 +133,7 @@ if watch
         handler: 
             change: (file, stats) -> 
                 return unless file.match /\.coffee/
-                compile().then ->
+                compile(file).then ->
                     refresh()
                     specFile = file.replace /\.coffee$/, '_spec.coffee' 
                     specFile = specFile.replace process.cwd() + sep + src, spec

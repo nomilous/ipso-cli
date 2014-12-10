@@ -1,6 +1,6 @@
 {
   "name": "ipso-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "ipso cli",
   "bin": {
     "ipso": "./bin/ipso"
@@ -19,14 +19,14 @@
   },
   "dependencies": {
     "also": "0.0.12",
-    "hound": "~1.0.4",
-    "should": "~2.1.0",
+    "coffee-script": "^1.8.0",
     "colors": "~0.6.2",
+    "commander": "~2.1.0",
+    "hound": "^1.0.4",
+    "keypress": "~0.2.1",
+    "mocha": "~1.14.0",
     "node-dev": "~2.1.4",
     "node-inspector": "~0.6.1",
-    "coffee-script": "~1.6.3",
-    "commander": "~2.1.0",
-    "keypress": "~0.2.1",
-    "mocha": "~1.14.0"
+    "should": "~2.1.0"
   }
 }
