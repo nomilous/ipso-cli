@@ -132,6 +132,12 @@ if watch
         path: program.src || 'src'
         handler: 
             change: (file, stats) -> 
+                if file.match /\.js/
+                    specFile = file.replace /\.js$/, '_spec.js'
+                    specFile = specFile.replace process.cwd() + sep + src, spec
+                    console.log specFile
+                    return test(specFile).then -> refresh()
+
                 return unless file.match /\.coffee/
                 compile(file).then ->
                     refresh()

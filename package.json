@@ -1,6 +1,6 @@
 {
   "name": "ipso-cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "ipso cli",
   "bin": {
     "ipso": "./bin/ipso"
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "also": "0.0.12",
-    "coffee-script": "^1.8.0",
+    "coffee-script": "^1.9.2",
     "colors": "~0.6.2",
     "commander": "~2.1.0",
     "hound": "^1.0.4",
