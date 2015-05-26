@@ -35,7 +35,7 @@ program.option '-e, --alt-env [name]',   'Loads .env.name'
 program.option '    --spec    [dir]',    'Specify alternate spec dir.',       'spec'
 program.option '    --src     [dir]',    'Specify alternate src dir.',        'src'
 program.option '    --lib     [dir]',    'Specify alternate compile target.', 'lib'
-
+program.option '    --coffee',           'Specs are coffee'
 
 {env, altEnv, mocha, watch, spec, src, lib, env} = program.parse process.argv
 
@@ -63,9 +63,15 @@ test = deferred ({resolve}, file) ->
         #
 
     # console.log run: file
-    # testRunner.run [file], resolve 
+    # testRunner.run [file], resolve
 
+    if program.coffee
 
+        file = file.split('.')
+
+        file.pop()
+
+        file = file.join('.') + '.coffee'
     
     ipsoPath = normalize __dirname + '/ipso'
     bin      = normalize __dirname + '/../node_modules/.bin/mocha'
